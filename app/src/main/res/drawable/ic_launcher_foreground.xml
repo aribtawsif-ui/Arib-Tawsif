@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Porey Hanger-P Mark -->
+    <path
+        android:pathData="M51,32 L57.5,32 A8.5,8.5 0 0,1 57.5,49 L51,49 Z M51,32 L51,57 M51,57 L32.5,69.5 A2.2,2.2 0 0,0 33.7,73.5 L68.3,73.5 A2.2,2.2 0 0,0 69.5,69.5 L51,57"
+        android:strokeColor="#FF2E3A32"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="4.6" />
+    <!-- Coral Accent Dot inside P loop -->
+    <path
+        android:fillColor="#FFE94E35"
+        android:pathData="M57.6,40.5 m-3.4,0 a3.4,3.4 0 1,0 6.8,0 a3.4,3.4 0 1,0 -6.8,0" />
+</vector>

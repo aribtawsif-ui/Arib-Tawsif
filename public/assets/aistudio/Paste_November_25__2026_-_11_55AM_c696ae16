@@ -1,0 +1,1348 @@
+# MASTER DEVELOPMENT PROMPT: BUILD A COMPLETE REAL-TIME FASHION COMMERCE & TECHNOLOGY ECOSYSTEM FOR BANGLADESH
+
+Act as a senior product architect, UI/UX designer, full-stack software engineer, database architect, cybersecurity engineer, and DevOps engineer.
+
+Your task is to plan, architect, design, and develop a complete, functional, production-oriented fashion-tech commerce platform for the Bangladesh market.
+
+This must be a real, working, full-stack application with a customer-facing website, merchant management system, physical retail inventory integration, centralised order management, administrative dashboard, and integrated delivery management infrastructure.
+
+Do not create merely a landing page, static prototype, or collection of disconnected dashboard mockups.
+
+Every major feature must have functional frontend components, backend logic, database integration, proper permissions, validation, and meaningful user workflows.
+
+Build the system modularly so it can be expanded without rebuilding the entire platform.
+
+---
+
+# 1. BUSINESS CONCEPT
+
+The platform is a unified fashion commerce ecosystem connecting:
+
+1. Customers who want to discover and purchase clothing.
+2. Physical clothing retailers with existing POS systems.
+3. Physical retailers without POS systems.
+4. Online-only clothing brands and independent sellers.
+5. The central marketplace and inventory management infrastructure.
+6. Delivery operations and riders.
+7. Platform administrators.
+
+The objective is to connect fragmented fashion businesses across Bangladesh into one digital commerce ecosystem.
+
+Customers should be able to discover products from different clothing brands, compare prices and product information, check availability, place orders, and receive products through an integrated delivery network.
+
+Merchants should be able to participate without being forced to change their existing business operations.
+
+The platform must support both marketplace commerce and merchant operational software.
+
+Initial product category: Clothing and fashion.
+
+Initial geographical market: Bangladesh.
+
+Currency: Bangladeshi Taka (BDT / ৳).
+
+Primary language: English, with architecture ready for Bangla localisation.
+
+Timezone: Asia/Dhaka.
+
+---
+
+# 2. TECHNOLOGY ARCHITECTURE
+
+Use the following recommended technology stack unless a specific tool or environment requires a compatible alternative.
+
+FRONTEND:
+- Next.js with App Router.
+- React.
+- TypeScript.
+- Tailwind CSS.
+- shadcn/ui components.
+- Lucide icons.
+- Responsive design for desktop, tablet, and mobile.
+- Progressive Web App capabilities where practical.
+
+BACKEND:
+- Next.js server-side services and API routes.
+- Secure server-side business logic.
+- REST APIs or typed server actions where appropriate.
+- Webhook endpoints for external POS, payment, and delivery integrations.
+- Background job processing for asynchronous tasks.
+
+DATABASE:
+- PostgreSQL.
+- Supabase for managed database, authentication, realtime capabilities, and file storage.
+- Proper relational database design.
+- Database indexes and foreign-key constraints.
+- Transactions for inventory and order operations.
+
+REAL-TIME:
+- Supabase Realtime or an equivalent WebSocket-based system.
+- Server-side event processing.
+- Real-time inventory updates.
+- Live order status updates.
+- Merchant notifications.
+- Rider location updates where supported.
+- Database-backed event processing for reliable updates.
+
+BACKGROUND JOBS:
+- Trigger.dev, Inngest, or an equivalent reliable job-processing system.
+- Retry failed integrations.
+- Process notifications and webhooks.
+- Reconcile inventory.
+- Handle delivery status updates.
+
+MAPS:
+- Google Maps Platform or Mapbox.
+- Store locations.
+- Customer delivery locations.
+- Rider locations.
+- Distance and delivery-area calculations.
+
+PAYMENTS:
+Design a payment integration layer that can support:
+- Cash on Delivery.
+- bKash.
+- Nagad.
+- Card payments.
+- SSLCommerz or other compatible payment gateways.
+
+Use official payment APIs and sandbox environments. Never simulate successful payment transactions.
+
+DEPLOYMENT:
+- Vercel or equivalent frontend hosting.
+- Supabase managed PostgreSQL.
+- Secure environment variables.
+- Production and development environments.
+- Error monitoring and logging.
+
+All external integrations must use documented APIs, valid credentials, and verified webhook events. If credentials are unavailable, create a clearly labelled integration-ready adapter and sandbox mode. Never pretend that an external service is connected when it is not.
+
+---
+
+# 3. USER ROLES AND ACCESS CONTROL
+
+Create separate user roles with role-based access control.
+
+A. CUSTOMER
+- Browse products.
+- Search and filter products.
+- Compare merchants.
+- Manage cart.
+- Place orders.
+- Make payments.
+- Track orders.
+- Submit reviews.
+- Manage addresses and profile.
+
+B. PHYSICAL MERCHANT
+- Manage physical store information.
+- Connect an existing POS system where supported.
+- Manage product listings.
+- Manage inventory when manual updating is necessary.
+- View online orders.
+- Confirm fulfilment.
+- View sales and performance reports.
+
+C. ONLINE MERCHANT
+- Manage online store profile.
+- Add and edit products.
+- Manage stock and product variations.
+- Receive and process orders.
+- Manage delivery status.
+- View analytics.
+
+D. STORE EMPLOYEE
+- Restricted access to assigned merchant.
+- Record stock changes where authorised.
+- Process orders.
+- Access permitted inventory and checkout functions.
+- No access to sensitive owner-level financial settings.
+
+E. RIDER / DELIVERY STAFF
+- View assigned delivery jobs.
+- Accept or reject assignments according to dispatch rules.
+- Access pickup and delivery information.
+- Update delivery status.
+- Share location while on an active delivery, subject to permissions.
+- Upload proof of delivery.
+
+F. ADMINISTRATOR
+- Manage customers.
+- Manage merchants.
+- Verify merchants.
+- Manage products and categories.
+- Monitor inventory.
+- Manage orders.
+- Manage payments and commissions.
+- Manage delivery operations.
+- Manage riders.
+- Manage platform settings.
+- View analytics and audit logs.
+
+G. SUPER ADMIN
+- Full platform administration.
+- Manage administrator permissions.
+- Configure commission and subscription rules.
+- Configure integration credentials.
+- Manage security and platform-level settings.
+
+Implement role-based permissions on the backend. Hiding buttons on the frontend is not sufficient security.
+
+---
+
+# 4. CUSTOMER-FACING WEBSITE
+
+Create a modern, premium, futuristic fashion-commerce interface.
+
+The website should feel like a combination of a premium fashion marketplace and a modern technology platform.
+
+DESIGN DIRECTION:
+- Clean, minimal, contemporary.
+- Premium fashion editorial aesthetic.
+- Excellent typography.
+- Generous whitespace.
+- High-quality product imagery.
+- Smooth transitions and subtle animations.
+- Clear product cards.
+- Responsive layouts.
+- Professional navigation.
+- Fast page loading.
+- Accessible colour contrast.
+
+Avoid excessive gradients, generic AI-generated dashboard styling, clutter, and unnecessary animations.
+
+MAIN NAVIGATION:
+- Home.
+- Men.
+- Women.
+- Kids.
+- Sportswear.
+- Brands.
+- New Arrivals.
+- Offers.
+- Search.
+- Account.
+- Cart.
+
+HOME PAGE:
+
+Create the following sections:
+
+1. Hero section with a premium fashion campaign.
+2. Featured brands.
+3. Trending products.
+4. New arrivals.
+5. Popular categories.
+6. Recommended products.
+7. Nearby store availability.
+8. Best-selling products.
+9. Seasonal promotions.
+10. Customer reviews.
+11. Footer with company information, support, policies, and social links.
+
+PRODUCT DISCOVERY:
+
+Customers must be able to:
+- Search by product name.
+- Search by brand.
+- Search by category.
+- Search by merchant.
+- Search by product type.
+- Filter by price.
+- Filter by size.
+- Filter by colour.
+- Filter by fabric.
+- Filter by availability.
+- Filter by delivery option.
+- Sort by price, popularity, newest, and ratings.
+
+PRODUCT DETAIL PAGE:
+
+Each product should contain:
+- Product name.
+- Brand.
+- Merchant/store name.
+- Product images and videos.
+- Product description.
+- Price.
+- Discounted price where applicable.
+- Available sizes.
+- Available colours.
+- Fabric and material information.
+- Product specifications.
+- Merchant rating.
+- Verified customer reviews.
+- Return and exchange information.
+- Estimated delivery time.
+- Stock availability.
+- Store availability.
+
+If the same or equivalent product is offered by multiple merchants, provide a merchant comparison view showing:
+- Merchant name.
+- Price.
+- Product condition or edition where relevant.
+- Available sizes and colours.
+- Stock freshness.
+- Merchant rating.
+- Delivery estimate.
+- Delivery charge.
+
+Do not incorrectly merge visually similar products with different specifications. Use product variants and product identity carefully.
+
+NEARBY STORE DISCOVERY:
+
+Allow customers to enter a delivery address or grant location permission.
+
+Show participating nearby merchants with the selected product available.
+
+Display:
+- Store name.
+- Approximate distance.
+- Available product variants.
+- Stock confidence or freshness.
+- Estimated fulfilment time.
+- Delivery options.
+
+Only show real merchant inventory data. Never invent stock availability.
+
+CART AND CHECKOUT:
+
+Create a complete shopping cart.
+
+Support:
+- Adding products.
+- Changing quantities.
+- Selecting sizes and colours.
+- Removing products.
+- Merchant-based order grouping.
+- Delivery charge calculation.
+- Discount codes.
+- Order summary.
+- Address selection.
+- Payment method selection.
+- Order confirmation.
+
+If products originate from multiple merchants, create separate fulfilment groups under one customer checkout where operationally appropriate.
+
+Clearly explain separate delivery charges or delivery schedules.
+
+CUSTOMER ACCOUNT:
+
+Create:
+- Registration.
+- Login.
+- Profile.
+- Saved addresses.
+- Order history.
+- Active orders.
+- Return and exchange requests.
+- Saved products.
+- Reviews.
+- Notifications.
+- Account settings.
+
+---
+
+# 5. PHYSICAL MERCHANT SYSTEM — EXISTING POS USERS
+
+This is a major part of the platform.
+
+Physical retailers that already use POS software should be able to connect their existing system without changing their cashier workflow.
+
+POS INTEGRATION:
+
+Create a dedicated POS integration module.
+
+Support integration through:
+- Official POS APIs.
+- Webhooks.
+- Secure integration credentials.
+- Approved middleware or connector services.
+- Scheduled reconciliation when real-time events are unavailable.
+
+WORKFLOW:
+
+1. A physical retailer registers on the platform.
+2. The merchant selects the POS provider they currently use.
+3. The platform guides the merchant through the supported connection process.
+4. The merchant authorises the connection.
+5. Product identifiers and inventory locations are mapped.
+6. The POS sends a sales event when a physical transaction is completed.
+7. The backend validates the event and identifies the relevant product and variant.
+8. The platform updates the corresponding marketplace inventory.
+9. The change is broadcast to relevant customer and merchant interfaces.
+10. Customers see the latest available inventory.
+
+The cashier must not need to enter the same sale twice.
+
+IMPORTANT TECHNICAL REQUIREMENTS:
+
+- Verify webhook signatures.
+- Use idempotency keys.
+- Prevent duplicate sale processing.
+- Maintain event logs.
+- Handle delayed events.
+- Handle out-of-order events.
+- Support failed-event retries.
+- Provide inventory reconciliation.
+- Maintain integration health status.
+- Alert merchants when their POS connection fails.
+
+Do not assume all POS providers have compatible APIs.
+
+Create an integration framework that can support additional POS providers as they become available.
+
+If a POS provider does not support integration, provide an alternative stock-update process.
+
+---
+
+# 6. PHYSICAL MERCHANT SYSTEM — NO EXISTING POS
+
+For traditional retailers without POS software, provide a simple, lightweight inventory management tool.
+
+The goal is to digitise their business without introducing complicated workflows.
+
+MERCHANT ONBOARDING:
+
+1. Merchant registers.
+2. Creates a store profile.
+3. Adds store location.
+4. Adds products.
+5. Adds product variants, such as sizes and colours.
+6. Enters initial stock quantities.
+7. Publishes eligible products to the marketplace after verification.
+
+SIMPLE STOCK MANAGEMENT:
+
+Create a mobile-friendly interface with:
+
+- Product search.
+- Barcode or SKU support where available.
+- Quick stock adjustment.
+- Product quantity increase.
+- Product quantity decrease.
+- Sales adjustment.
+- Damaged stock adjustment.
+- Return stock adjustment.
+- Low-stock warnings.
+- End-of-day stock reconciliation.
+- Stock movement history.
+
+PHYSICAL SALE UPDATE WORKFLOW:
+
+Option A — After each sale:
+- Merchant or authorised employee opens the lightweight stock tool.
+- Searches for the product.
+- Selects size and colour.
+- Enters the quantity sold.
+- Confirms the adjustment.
+- Marketplace inventory updates.
+
+Option B — End-of-day reconciliation:
+- Merchant reviews current stock.
+- Enters the verified available quantity.
+- Platform adjusts its stock record.
+- System records the adjustment and timestamp.
+
+Allow both workflows.
+
+Display the time of the last inventory update.
+
+For manually managed shops, clearly label inventory as manually updated and show an appropriate availability confidence.
+
+Do not represent manually updated inventory as guaranteed live stock.
+
+Provide an optional lightweight free tool for merchants who need basic stock management.
+
+---
+
+# 7. ONLINE-ONLY MERCHANT DASHBOARD
+
+Build a separate merchant dashboard for online-only clothing businesses.
+
+DASHBOARD OVERVIEW:
+
+Show:
+- Total orders.
+- Pending orders.
+- Completed orders.
+- Cancelled orders.
+- Total sales.
+- Product performance.
+- Low-stock products.
+- Recent activity.
+- Revenue reports.
+- Delivery status.
+
+PRODUCT MANAGEMENT:
+
+Merchants must be able to:
+- Add products.
+- Edit products.
+- Upload multiple images.
+- Add product descriptions.
+- Add category.
+- Add brand.
+- Set price.
+- Set discounted price.
+- Add size variants.
+- Add colour variants.
+- Add SKU.
+- Set stock quantity.
+- Mark products unavailable.
+- Publish or unpublish products.
+
+INVENTORY MANAGEMENT:
+
+- Manage stock by product variant.
+- Track stock movement.
+- Update quantities.
+- View low-stock alerts.
+- Reserve stock for pending orders.
+- Release stock after cancellations or expired reservations.
+- Prevent overselling.
+
+ORDER MANAGEMENT:
+
+- Receive real-time order notifications.
+- Accept or reject orders.
+- Confirm available stock.
+- Prepare products.
+- Mark ready for pickup.
+- Request delivery collection.
+- View assigned rider.
+- Track delivery status.
+- Manage cancellation requests.
+- Handle returns and exchanges.
+
+CUSTOMER MANAGEMENT:
+
+- View customer order information permitted by platform policy.
+- View order history.
+- Manage order communication.
+- Maintain customer privacy.
+
+ANALYTICS:
+
+- Sales reports.
+- Order reports.
+- Popular products.
+- Product conversion performance where data is available.
+- Stock movement.
+- Merchant revenue.
+- Commission deductions.
+- Payout history.
+
+---
+
+# 8. CENTRAL INVENTORY MANAGEMENT ENGINE
+
+Create a central inventory service responsible for coordinating stock information across all merchants.
+
+Every product must have a merchant-specific inventory record.
+
+Inventory should be maintained by:
+- Merchant.
+- Store location.
+- Product.
+- Variant.
+- SKU.
+- Available quantity.
+- Reserved quantity.
+- Last updated time.
+- Inventory source.
+- Synchronisation status.
+
+INVENTORY FORMULA:
+
+Available quantity = Physical recorded quantity - Reserved quantity - Other unavailable quantity.
+
+Maintain a clear distinction between:
+- Physical stock.
+- Available stock.
+- Reserved stock.
+- Damaged stock.
+- In-transit stock.
+
+REAL-TIME INVENTORY WORKFLOW:
+
+When a physical POS sale occurs:
+1. Receive the sale event.
+2. Validate the event.
+3. Identify the product variant.
+4. Record the stock movement.
+5. Recalculate available stock.
+6. Update marketplace availability.
+7. Notify relevant subscribers.
+
+When a merchant manually updates stock:
+1. Receive the adjustment.
+2. Validate the merchant's permission.
+3. Record the stock movement.
+4. Recalculate available stock.
+5. Update the marketplace.
+6. Record the update timestamp.
+
+When an online order is placed:
+1. Verify available stock.
+2. Lock or atomically reserve the required quantity.
+3. Prevent another order from claiming the same units.
+4. Create an order reservation.
+5. Confirm the order according to the selected fulfilment workflow.
+
+If an order fails or is cancelled:
+- Release the reservation.
+- Restore the available quantity.
+- Record the inventory event.
+
+Use PostgreSQL transactions, row-level locking or atomic conditional updates, and appropriate database constraints to prevent overselling.
+
+Supabase Realtime or WebSockets should distribute updates, but the database must remain the authoritative source of inventory truth.
+
+---
+
+# 9. ORDER MANAGEMENT & AUTOMATED MERCHANT ALLOCATION
+
+Create a central order management system.
+
+When a customer places an order, the system must identify eligible merchants who can fulfil it.
+
+MERCHANT SELECTION FACTORS:
+
+- Product availability.
+- Exact size and colour availability.
+- Distance from customer.
+- Merchant operating hours.
+- Merchant fulfilment capability.
+- Merchant reliability.
+- Estimated delivery time.
+- Delivery cost.
+- Merchant confirmation status.
+
+Create a configurable merchant selection algorithm.
+
+Do not always select the nearest merchant if another merchant has better stock confidence or fulfilment reliability.
+
+ORDER WORKFLOW:
+
+1. Customer adds products to cart.
+2. Customer selects delivery address.
+3. System retrieves eligible merchant inventory.
+4. System checks availability.
+5. System calculates delivery options.
+6. Customer confirms checkout.
+7. System atomically reserves stock.
+8. Order and fulfilment records are created.
+9. Merchant receives an order notification.
+10. Merchant confirms fulfilment.
+11. Delivery assignment is created.
+12. Rider or delivery partner receives pickup details.
+13. Merchant prepares the order.
+14. Product is collected.
+15. Delivery status updates in real time.
+16. Customer receives the order.
+17. Order is marked delivered after verification.
+18. Payment settlement and merchant commission accounting are processed.
+
+If the merchant rejects or cannot fulfil an order:
+- Attempt another eligible merchant if substitution is allowed.
+- Otherwise release the reservation.
+- Inform the customer.
+- Offer a refund or cancellation where appropriate.
+
+For multi-merchant baskets, create separate fulfilment orders with transparent customer-facing delivery information.
+
+---
+
+# 10. DELIVERY & RIDER MANAGEMENT SYSTEM
+
+Build an integrated delivery management module.
+
+The system should initially support external courier or delivery partners through integration adapters, while allowing the platform to introduce its own rider network.
+
+DELIVERY FEATURES:
+
+- Delivery booking.
+- Pickup scheduling.
+- Rider assignment.
+- Merchant pickup location.
+- Customer delivery address.
+- Delivery charge calculation.
+- Estimated delivery time.
+- Live delivery status.
+- Proof of pickup.
+- Proof of delivery.
+- Failed delivery handling.
+- Cancellation.
+- Return collection.
+- Delivery performance tracking.
+
+RIDER DASHBOARD:
+
+Create a mobile-first rider interface.
+
+Riders should be able to:
+- Log in.
+- Set availability.
+- Receive delivery assignments.
+- Accept or reject assignments.
+- View pickup and drop-off details.
+- Navigate using supported map services.
+- Update pickup status.
+- Update delivery status.
+- Contact customer or merchant through authorised channels.
+- Upload proof of delivery.
+- View completed deliveries.
+- View earnings where applicable.
+
+RIDER LOCATION:
+
+When a rider is assigned to an active delivery:
+- Allow location sharing with appropriate permission.
+- Update location periodically.
+- Show the customer's delivery tracking view.
+- Stop unnecessary tracking after the delivery is completed.
+
+Protect customer and rider location data.
+
+EXPRESS AND SAME-DAY DELIVERY:
+
+Create configurable delivery service zones.
+
+Allow the platform administrator to configure:
+- Service area.
+- Delivery time windows.
+- Delivery pricing.
+- Maximum delivery distance.
+- Rider availability.
+- Merchant preparation time.
+- Delivery capacity.
+
+Do not promise same-day delivery outside supported areas or operating hours.
+
+---
+
+# 11. ADMINISTRATIVE CONTROL PANEL
+
+Create a comprehensive admin dashboard.
+
+ADMIN OVERVIEW:
+
+Show:
+- Total customers.
+- Active merchants.
+- Verified merchants.
+- Total products.
+- Total orders.
+- Completed orders.
+- Pending orders.
+- Cancelled orders.
+- Gross merchandise value.
+- Platform revenue.
+- Delivery performance.
+- Active riders.
+- Integration health.
+
+MERCHANT MANAGEMENT:
+
+- View merchant applications.
+- Approve or reject merchants.
+- Verify business information.
+- Suspend accounts.
+- Manage store locations.
+- Review merchant performance.
+- Configure merchant commissions.
+- Configure subscription plans.
+
+PRODUCT MANAGEMENT:
+
+- Review products.
+- Approve listings where moderation is required.
+- Manage categories.
+- Manage brands.
+- Remove prohibited or misleading listings.
+- Monitor product quality complaints.
+
+ORDER MANAGEMENT:
+
+- View all orders.
+- View fulfilment groups.
+- View merchant assignments.
+- View delivery assignments.
+- Resolve disputes.
+- Manage refunds and cancellations.
+- Track order events.
+
+FINANCIAL MANAGEMENT:
+
+- Configure commissions.
+- Track merchant payable amounts.
+- Track platform revenue.
+- Track delivery charges.
+- Track payment gateway transactions.
+- Record merchant settlements.
+- Maintain financial audit trails.
+
+DELIVERY MANAGEMENT:
+
+- Manage riders.
+- Manage delivery zones.
+- Monitor active deliveries.
+- Configure delivery charges.
+- Monitor failed deliveries.
+- Review rider performance.
+
+PLATFORM SETTINGS:
+
+- Categories.
+- Product attributes.
+- Commission settings.
+- Delivery rules.
+- Payment settings.
+- Notification settings.
+- Subscription plans.
+- Merchant verification requirements.
+- Feature flags.
+
+---
+
+# 12. PAYMENT & FINANCIAL SYSTEM
+
+Create a payment abstraction layer.
+
+Support:
+- Cash on Delivery.
+- bKash.
+- Nagad.
+- Card payments.
+- Supported payment gateway integrations.
+
+Payment workflow:
+
+1. Customer selects payment method.
+2. Backend creates a payment request.
+3. Gateway processes payment where applicable.
+4. Backend verifies the transaction through an official API or verified webhook.
+5. Order payment status is updated.
+6. Payment transaction is recorded.
+7. Refunds are tracked separately.
+8. Merchant settlement amounts are calculated.
+
+Create a financial ledger.
+
+Track:
+- Customer payments.
+- Merchant payable amounts.
+- Marketplace commissions.
+- Delivery charges.
+- Gateway fees.
+- Refunds.
+- Adjustments.
+- Merchant settlements.
+
+Do not calculate financial balances from frontend values.
+
+Do not mark payments successful merely because the customer returns to a success page.
+
+---
+
+# 13. NOTIFICATION SYSTEM
+
+Create a central notification service.
+
+Support:
+- In-app notifications.
+- Email notifications.
+- SMS integration where available.
+- Push notifications where supported.
+
+CUSTOMER NOTIFICATIONS:
+- Order confirmation.
+- Payment confirmation.
+- Merchant confirmation.
+- Order preparation.
+- Rider assignment.
+- Pickup confirmation.
+- Out-for-delivery.
+- Delivered.
+- Cancellation.
+- Refund.
+- Return or exchange updates.
+
+MERCHANT NOTIFICATIONS:
+- New order.
+- Low stock.
+- POS integration failure.
+- Inventory mismatch.
+- Payment settlement.
+- Return request.
+- Important platform announcements.
+
+RIDER NOTIFICATIONS:
+- New delivery assignment.
+- Pickup instructions.
+- Delivery changes.
+- Cancellation.
+
+ADMIN NOTIFICATIONS:
+- Integration failure.
+- Unusual order activity.
+- Payment failures.
+- Inventory conflicts.
+- Delivery incidents.
+
+Use asynchronous jobs and retries for reliable notification delivery.
+
+---
+
+# 14. RETURNS, REFUNDS & EXCHANGES
+
+Create a structured return and exchange system.
+
+Customers can:
+- Request returns.
+- Request exchanges.
+- Select a reason.
+- Upload supporting images where necessary.
+- View request status.
+- Track return collection.
+
+Merchants can:
+- Review requests.
+- Accept or reject requests according to policy.
+- Provide a resolution.
+- Confirm returned product condition.
+
+Administrators can:
+- Review disputes.
+- Approve exceptions.
+- Process authorised refunds.
+- Monitor merchant return performance.
+
+Maintain a full audit trail.
+
+Support configurable return policies and display them clearly before checkout.
+
+---
+
+# 15. DATABASE ARCHITECTURE
+
+Design a properly normalised relational PostgreSQL database.
+
+Create appropriate tables for:
+
+IDENTITY:
+- users
+- user_profiles
+- user_roles
+- merchant_accounts
+- merchant_employees
+- customer_addresses
+
+MERCHANTS:
+- merchants
+- stores
+- store_locations
+- merchant_verification
+- merchant_settings
+- merchant_subscriptions
+
+PRODUCTS:
+- categories
+- brands
+- products
+- product_variants
+- product_images
+- product_attributes
+- product_skus
+
+INVENTORY:
+- inventory_items
+- inventory_movements
+- inventory_reservations
+- inventory_sources
+- inventory_sync_logs
+- inventory_reconciliation
+
+INTEGRATIONS:
+- pos_providers
+- pos_connections
+- pos_product_mappings
+- pos_webhook_events
+- integration_logs
+
+COMMERCE:
+- carts
+- cart_items
+- orders
+- order_items
+- fulfilment_orders
+- order_status_history
+- merchant_order_acceptance
+
+PAYMENTS:
+- payment_transactions
+- payment_methods
+- refunds
+- financial_ledger
+- merchant_settlements
+- commission_rules
+
+DELIVERY:
+- delivery_zones
+- delivery_jobs
+- riders
+- rider_locations
+- rider_assignments
+- delivery_status_history
+- proof_of_delivery
+
+CUSTOMER EXPERIENCE:
+- reviews
+- wishlists
+- return_requests
+- exchange_requests
+- support_tickets
+- notifications
+
+ADMINISTRATION:
+- admin_settings
+- audit_logs
+- platform_announcements
+- feature_flags
+
+Add:
+- UUID primary keys.
+- Proper foreign keys.
+- Unique constraints.
+- Useful indexes.
+- Created and updated timestamps.
+- Soft deletion where appropriate.
+- Transactional consistency.
+- Row-level security policies.
+
+Avoid storing sensitive credentials in ordinary application tables. Use secure secret management and encryption.
+
+Document all important relationships.
+
+---
+
+# 16. REAL-TIME SYSTEM REQUIREMENTS
+
+The platform must provide real-time experiences across connected users and merchants.
+
+Implement real-time updates for:
+
+1. Product stock changes.
+2. Merchant inventory updates.
+3. POS sales events.
+4. New customer orders.
+5. Merchant order acceptance.
+6. Order processing.
+7. Rider assignment.
+8. Delivery status.
+9. Rider location where authorised.
+10. Notifications.
+11. Admin operational alerts.
+
+REAL-TIME ARCHITECTURE:
+
+- PostgreSQL is the authoritative source of truth.
+- Every important state change must be persisted.
+- Use a transactional event/outbox approach for reliable event delivery.
+- Publish relevant events through Realtime or WebSockets.
+- Authenticate subscriptions.
+- Restrict subscriptions to authorised users and merchant accounts.
+- Reconnect safely after temporary network failures.
+- Reconcile data after reconnection.
+- Avoid relying on frontend state as the source of truth.
+
+REAL-TIME INVENTORY EXAMPLE:
+
+If a merchant sells the last available jersey in size L through its connected POS:
+
+1. POS reports the completed sale.
+2. Backend validates and processes the event.
+3. Inventory quantity is reduced.
+4. Database transaction commits.
+5. Realtime event is published.
+6. Customer product pages update availability.
+7. Other checkout sessions cannot reserve the sold unit.
+
+If the POS connection is delayed or unavailable, show the last known stock update time and use an availability confirmation workflow.
+
+Do not promise instantaneous updates from disconnected systems.
+
+---
+
+# 17. SEARCH, PERFORMANCE & SCALABILITY
+
+Implement:
+- Fast product search.
+- Database-backed filtering.
+- Pagination.
+- Image optimisation.
+- Caching for suitable public content.
+- Database query optimisation.
+- Lazy loading.
+- Responsive image sizes.
+- Efficient API endpoints.
+- Background processing for expensive tasks.
+
+The platform should be designed to grow from a small pilot merchant network to thousands of merchants and a large customer base.
+
+Do not over-engineer the initial launch. Use modular services and clear boundaries so components can be separated as traffic grows.
+
+---
+
+# 18. SECURITY & DATA PROTECTION
+
+Implement:
+
+- Secure authentication.
+- Role-based access control.
+- Row-level security.
+- Input validation.
+- Output sanitisation.
+- Rate limiting.
+- Secure password handling.
+- Session management.
+- CSRF protection where applicable.
+- Webhook signature verification.
+- API permission checks.
+- File upload validation.
+- Protection against SQL injection.
+- Protection against cross-site scripting.
+- Audit logging.
+- Secure environment variables.
+- Database backups.
+- Payment security.
+- Privacy-conscious location tracking.
+
+Customers must not access another customer's private information.
+
+Merchants must not access another merchant's private business data.
+
+Riders must only access their assigned delivery information.
+
+Administrators must have auditable access.
+
+Do not store card numbers, CVV codes, or payment gateway secrets directly in the application database.
+
+Design data retention and deletion processes in accordance with applicable privacy and legal requirements in Bangladesh.
+
+---
+
+# 19. UI/UX DESIGN REQUIREMENTS
+
+Create separate interfaces for:
+
+1. Public customer website.
+2. Customer account.
+3. Physical merchant dashboard.
+4. Online merchant dashboard.
+5. Lightweight stock management interface.
+6. Rider mobile dashboard.
+7. Admin dashboard.
+
+Each interface must be responsive and appropriate for its users.
+
+Merchant interfaces should prioritise simplicity over visual complexity.
+
+A small shop owner should be able to update stock without technical knowledge.
+
+An online merchant should be able to add a product and process an order without needing developer assistance.
+
+Customers should be able to find a product and complete checkout with minimal friction.
+
+Use consistent design tokens, components, typography, spacing, forms, tables, modals, notifications, and navigation.
+
+Provide loading, empty, error, success, and offline states.
+
+---
+
+# 20. TESTING REQUIREMENTS
+
+Write meaningful automated tests.
+
+UNIT TESTS:
+- Inventory calculations.
+- Product variant logic.
+- Merchant commission calculations.
+- Delivery fee calculations.
+- Order state transitions.
+- Stock reservation and release.
+
+INTEGRATION TESTS:
+- POS webhook processing.
+- Inventory synchronisation.
+- Customer checkout.
+- Payment verification.
+- Merchant order acceptance.
+- Rider assignment.
+- Delivery status updates.
+
+END-TO-END TESTS:
+
+Test this complete scenario:
+
+1. A merchant registers.
+2. The merchant adds a product.
+3. The product becomes visible on the marketplace.
+4. A customer discovers the product.
+5. The customer checks stock.
+6. The customer places an order.
+7. Inventory is reserved.
+8. Merchant receives the order.
+9. Merchant confirms it.
+10. Delivery is assigned.
+11. Rider collects the product.
+12. Customer tracks the delivery.
+13. Rider completes the delivery.
+14. Order is marked delivered.
+15. Payment and merchant accounting records are updated.
+
+Also test:
+- Two customers trying to buy the last available unit.
+- Duplicate POS webhooks.
+- Delayed POS events.
+- Merchant cancellation.
+- Customer cancellation.
+- Payment failure.
+- Delivery failure.
+- Internet disconnection and reconnection.
+- Inventory reconciliation.
+
+Do not mark the application production-ready if critical security, inventory consistency, payment, or order-processing tests are failing.
+
+---
+
+# 21. DEVELOPMENT PHASES
+
+Develop the platform in controlled phases.
+
+PHASE 1 — CORE FOUNDATION:
+- Project structure.
+- Database schema.
+- Authentication.
+- User roles.
+- Merchant registration.
+- Product catalogue.
+- Customer marketplace.
+- Product search.
+- Cart and checkout.
+- Basic order management.
+
+PHASE 2 — MERCHANT OPERATIONS:
+- Online merchant dashboard.
+- Physical merchant onboarding.
+- Lightweight stock management.
+- Inventory tracking.
+- Product variants.
+- Stock movements.
+- Order notifications.
+
+PHASE 3 — REAL-TIME INFRASTRUCTURE:
+- Real-time inventory updates.
+- Order status updates.
+- Inventory reservation.
+- POS integration framework.
+- Webhook processing.
+- Integration monitoring.
+
+PHASE 4 — DELIVERY:
+- Delivery management.
+- Courier integration adapters.
+- Rider dashboard.
+- Rider assignment.
+- Customer order tracking.
+- Delivery zone management.
+
+PHASE 5 — FINANCIAL & ADMINISTRATION:
+- Payment gateway integrations.
+- Commission calculations.
+- Merchant settlements.
+- Admin dashboard.
+- Returns and refunds.
+- Analytics.
+
+PHASE 6 — PRODUCTION HARDENING:
+- Security audit.
+- Performance testing.
+- Database backups.
+- Monitoring.
+- Error handling.
+- Integration testing.
+- Deployment.
+- Documentation.
+
+Build a functioning MVP first, but structure the codebase so future phases can be added without architectural rewrites.
+
+---
+
+# 22. REQUIRED DELIVERABLES
+
+At the end of development, provide:
+
+1. Complete frontend application.
+2. Complete backend application.
+3. Database schema and migrations.
+4. Authentication and role management.
+5. API documentation.
+6. Merchant onboarding workflows.
+7. Customer shopping workflows.
+8. Inventory management system.
+9. POS integration framework.
+10. Order management system.
+11. Delivery management framework.
+12. Admin dashboard.
+13. Automated test suite.
+14. Deployment configuration.
+15. Environment variable documentation.
+16. Installation instructions.
+17. Database setup instructions.
+18. Integration setup instructions.
+19. User guides for merchants and administrators.
+20. Technical architecture documentation.
+
+Provide demo accounts and clearly labelled seed data for development and testing only.
+
+Never mix demo data with production data.
+
+---
+
+# 23. NON-NEGOTIABLE DEVELOPMENT RULES
+
+- Do not create a static-only prototype.
+- Do not use fake data as if it were live business information.
+- Do not invent successful payment transactions.
+- Do not invent POS connections.
+- Do not invent rider locations.
+- Do not show unverified product availability as guaranteed stock.
+- Do not hardcode merchant, customer, or order information.
+- Do not put privileged secrets in frontend code.
+- Do not expose private merchant data.
+- Do not implement fake real-time functionality using periodic frontend animations.
+- Do not rely on frontend-only inventory calculations.
+- Do not allow duplicate orders to oversell stock.
+- Do not skip backend validation.
+- Do not claim an external integration is complete until it has been tested with the actual provider.
+- Do not leave important buttons non-functional.
+- Do not silently discard errors.
+- Do not sacrifice security for development speed.
+
+If a feature requires unavailable external credentials, implement its integration interface, configuration instructions, sandbox behaviour, and clear connection status.
+
+For every major feature, implement the complete workflow from frontend interaction to backend processing and database persistence.
+
+Before writing code, produce:
+1. System architecture.
+2. Database relationship plan.
+3. User journey diagrams.
+4. API and integration plan.
+5. Development milestone plan.
+
+Then begin implementation.
+
+Work in small, testable milestones. After each milestone, report what is actually implemented, what has been tested, what remains incomplete, and what external credentials or decisions are required.
+
+The final objective is a secure, scalable, genuinely functional fashion-commerce ecosystem for Bangladesh — connecting customers, physical shops, online brands, inventory, merchant operations, and delivery infrastructure through one unified technology platform.

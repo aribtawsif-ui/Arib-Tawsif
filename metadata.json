@@ -1,0 +1,8 @@
+{
+  "name": "Remix Porey - পরে",
+  "description": "Real-time fashion commerce and retail inventory ecosystem for Bangladesh connecting shoppers, physical shops, online brands, riders, and platform operations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

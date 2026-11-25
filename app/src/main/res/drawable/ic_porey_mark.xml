@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Sage Circle Backdrop -->
+    <path
+        android:fillColor="#FFA7B69B"
+        android:pathData="M24,24 m-22,0 a22,22 0 1,0 44,0 a22,22 0 1,0 -44,0" />
+    <!-- Hanger-P Mark -->
+    <path
+        android:pathData="M22.5,12.5 L26,12.5 A4.5,4.5 0 0,1 26,21.5 L22.5,21.5 Z M22.5,12.5 L22.5,26 M22.5,26 L12.8,32.5 A1.2,1.2 0 0,0 13.5,34.7 L31.5,34.7 A1.2,1.2 0 0,0 32.2,32.5 L22.5,26"
+        android:strokeColor="#FF2E3A32"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeWidth="2.5" />
+    <!-- Coral Dot -->
+    <path
+        android:fillColor="#FFE94E35"
+        android:pathData="M26,17 m-1.9,0 a1.9,1.9 0 1,0 3.8,0 a1.9,1.9 0 1,0 -3.8,0" />
+</vector>

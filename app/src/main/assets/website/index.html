@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Porey - পরে | Bangladesh Fashion Commerce Website</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Sticky Top Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" data-nav="home">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="22" fill="#A7B69B" />
+          <path d="M22.5,12.5 L26,12.5 A4.5,4.5 0 0,1 26,21.5 L22.5,21.5 Z M22.5,12.5 L22.5,26 M22.5,26 L12.8,32.5 A1.2,1.2 0 0,0 13.5,34.7 L31.5,34.7 A1.2,1.2 0 0,0 32.2,32.5 L22.5,26"
+                fill="none" stroke="#2E3A32" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="26" cy="17" r="1.9" fill="#E94E35" />
+        </svg>
+        <div>
+          <div class="brand-title">Porey <span class="bangla">পরে</span></div>
+          <div class="brand-sub">DHAKA FASHION ECOSYSTEM</div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <button class="nav-btn active" data-section-btn="home" type="button">Home</button>
+        <button class="nav-btn" data-section-btn="catalog" type="button">Shop</button>
+        <button class="nav-btn" data-section-btn="shops" type="button">Verified Shops</button>
+        <button class="nav-btn" id="nav-workspace-btn" data-section-btn="workspace" type="button">Shop &amp; Admin</button>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="icon-pill" type="button" title="Toggle Light / Dark Mode">
+          <span id="theme-icon">🌙</span>
+          <span id="theme-label">Dark</span>
+        </button>
+
+        <button id="bag-open-btn" class="bag-pill" type="button">
+          <span>Bag</span>
+          <span id="bag-count" class="bag-badge">0</span>
+        </button>
+
+        <button id="auth-open-btn" class="primary-pill" type="button">
+          <span id="auth-btn-label">Guest · Login</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- Role / Status Banner -->
+    <div id="role-status-banner" class="status-banner">
+      <div class="status-banner-left">
+        <span id="role-chip" class="role-chip">GUEST</span>
+        <span id="role-status-text">Browsing as Guest. Customers must log in to buy products; new shops require Admin verification for a Verified sign.</span>
+      </div>
+      <div class="status-banner-actions">
+        <button id="banner-login-btn" class="btn btn-sm btn-outline" type="button">Login / Register</button>
+      </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="sec-home" class="section active-section">
+      <div class="hero-card">
+        <div class="hero-copy">
+          <span class="eyebrow">BANGLADESH FASHION · BDT (৳) · SAME-DAY DHAKA</span>
+          <h1>Heritage Craft &amp; Streetwear from Verified Dhaka Stores</h1>
+          <p class="hero-desc">
+            Compare live inventory across verified Banani, Dhanmondi, and Uttara boutiques or independent online studios.
+            Shop as a <strong>Customer</strong>, register as a <strong>Shop Owner</strong>, or explore freely as a <strong>Guest</strong>.
+          </p>
+          <div class="hero-cta-row">
+            <button id="hero-shop-btn" class="btn btn-primary" type="button">Explore Collection</button>
+            <button id="hero-register-shop-btn" class="btn btn-outline" type="button">Register a Shop</button>
+            <button id="hero-guest-btn" class="btn btn-ghost" type="button">Browse as Guest</button>
+          </div>
+          <div class="hero-trust-row">
+            <div class="trust-stat">
+              <strong id="stat-verified-shops">3</strong>
+              <span>Verified Shops</span>
+            </div>
+            <div class="trust-stat">
+              <strong id="stat-products">6</strong>
+              <span>Curated Styles</span>
+            </div>
+            <div class="trust-stat">
+              <strong>2–4 hrs</strong>
+              <span>Dhaka Express</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="images/img_hero_dhaka.jpg" alt="Porey Dhaka Fashion Editorial" />
+          <div class="hero-media-tag">
+            <span class="verified-sign">✔ Admin Verified Network</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Categories -->
+      <div class="section-head">
+        <div>
+          <h2>Featured Collections</h2>
+          <p class="muted">Tap a category to filter live stock across participating stores.</p>
+        </div>
+        <button class="btn btn-link" id="home-view-all-btn" type="button">View All Catalog →</button>
+      </div>
+      <div id="home-featured-grid" class="product-grid"></div>
+    </section>
+
+    <!-- CATALOG SECTION -->
+    <section id="sec-catalog" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Full Fashion Catalog</h2>
+          <p class="muted">Every product shows live merchant stock and shop verification status.</p>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <input id="search-input" class="search-input" type="search" placeholder="Search Panjabi, Jamdani, Banani, fabric..." />
+        <select id="category-select" class="select-input" aria-label="Category filter">
+          <option value="All">All Categories</option>
+          <option value="Panjabi">Panjabi</option>
+          <option value="Saree">Saree</option>
+          <option value="Streetwear">Streetwear</option>
+          <option value="Footwear">Footwear</option>
+        </select>
+        <select id="sort-select" class="select-input" aria-label="Sort products">
+          <option value="popular">Most Popular</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+        </select>
+        <label class="checkbox-pill">
+          <input id="verified-only-check" type="checkbox" />
+          <span>Verified Shops Only</span>
+        </label>
+      </div>
+
+      <div id="catalog-grid" class="product-grid"></div>
+    </section>
+
+    <!-- VERIFIED SHOPS DIRECTORY -->
+    <section id="sec-shops" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Participating Shops &amp; KYC Verification</h2>
+          <p class="muted">Newly registered shops remain Pending until a Platform Admin approves their Trade License &amp; grants the Verified sign.</p>
+        </div>
+        <button id="shops-register-btn" class="btn btn-primary" type="button">+ Register Your Shop</button>
+      </div>
+      <div id="shops-grid" class="shops-grid"></div>
+    </section>
+
+    <!-- WORKSPACE: SHOP OWNER & ADMIN PORTAL -->
+    <section id="sec-workspace" class="section">
+      <div class="workspace-tabs">
+        <button class="tab-pill active" data-ws-tab="shop" type="button">Shop Owner Console</button>
+        <button class="tab-pill" data-ws-tab="admin" type="button">Admin Shop Verification</button>
+      </div>
+
+      <!-- Shop Owner Console -->
+      <div id="ws-shop-panel" class="ws-panel active">
+        <div id="shop-owner-content"></div>
+      </div>
+
+      <!-- Admin Verification Console -->
+      <div id="ws-admin-panel" class="ws-panel">
+        <div id="admin-verify-content"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Porey - পরে</strong> · Bangladesh Fashion Commerce Website
+      </div>
+      <div class="muted">
+        BDT (৳) · Asia/Dhaka · Free-Tier Local Storefront &amp; Android Bridge
+      </div>
+    </div>
+  </footer>
+
+  <!-- PRODUCT DETAIL MODAL -->
+  <div id="product-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card modal-lg">
+      <button class="modal-close" data-close-modal="product-modal" type="button" aria-label="Close">✕</button>
+      <div id="product-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- AUTH / LOGIN / REGISTER MODAL -->
+  <div id="auth-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal="auth-modal" type="button" aria-label="Close">✕</button>
+      <div class="modal-header">
+        <h3>Porey Account Access</h3>
+        <p class="muted">Log in as Customer, Shop Owner, Guest, or Platform Admin.</p>
+      </div>
+
+      <div id="auth-gate-notice" class="notice-amber hidden">
+        <strong>Customer Login Required to Buy:</strong> Guests can browse freely, but you must sign in or register as a Customer to add products to your bag or place an order.
+      </div>
+
+      <div class="auth-role-tabs">
+        <button class="auth-tab active" data-auth-role="customer" type="button">Customer</button>
+        <button class="auth-tab" data-auth-role="shop" type="button">Shop Owner</button>
+        <button class="auth-tab" data-auth-role="guest" type="button">Guest</button>
+        <button class="auth-tab" data-auth-role="admin" type="button">Admin</button>
+      </div>
+
+      <!-- Customer Auth -->
+      <div id="auth-panel-customer" class="auth-panel active">
+        <div class="auth-mode-switch">
+          <button id="cust-mode-login" class="mode-btn active" type="button">Sign In</button>
+          <button id="cust-mode-reg" class="mode-btn" type="button">Register Customer</button>
+        </div>
+
+        <form id="cust-login-form" class="form-stack">
+          <label>Email or Phone
+            <input id="cust-login-id" type="text" value="nafisa.dhaka@example.bd" required />
+          </label>
+          <label>Password
+            <input id="cust-login-pw" type="password" value="porey123" required />
+          </label>
+          <button class="btn btn-primary" type="submit">Login as Customer</button>
+          <button id="cust-demo-btn" class="btn btn-outline" type="button">Quick Demo Customer (Nafisa Rahman)</button>
+        </form>
+
+        <form id="cust-reg-form" class="form-stack hidden">
+          <label>Full Name
+            <input id="cust-reg-name" type="text" placeholder="e.g., Tanvir Hossain" required />
+          </label>
+          <div class="form-row">
+            <label>BD Phone
+              <input id="cust-reg-phone" type="text" placeholder="+880 1711-000111" required />
+            </label>
+            <label>Email
+              <input id="cust-reg-email" type="email" placeholder="tanvir@example.bd" required />
+            </label>
+          </div>
+          <label>Dhaka Delivery Address
+            <input id="cust-reg-addr" type="text" placeholder="House 14, Road 6, Dhanmondi, Dhaka" required />
+          </label>
+          <label>Create Password (min 4 chars)
+            <input id="cust-reg-pw" type="password" required />
+          </label>
+          <button class="btn btn-primary" type="submit">Register &amp; Start Shopping</button>
+        </form>
+      </div>
+
+      <!-- Shop Owner Auth -->
+      <div id="auth-panel-shop" class="auth-panel">
+        <div class="auth-mode-switch">
+          <button id="shop-mode-login" class="mode-btn active" type="button">Sign In</button>
+          <button id="shop-mode-reg" class="mode-btn" type="button">Register New Shop</button>
+        </div>
+
+        <form id="shop-login-form" class="form-stack">
+          <label>Shop Owner Email or Phone
+            <input id="shop-login-id" type="text" value="banani.pos@example.bd" required />
+          </label>
+          <label>Password
+            <input id="shop-login-pw" type="password" value="porey123" required />
+          </label>
+          <button class="btn btn-primary" type="submit">Login as Shop Owner</button>
+          <button id="shop-demo-btn" class="btn btn-outline" type="button">Quick Demo Shop Owner (Banani POS)</button>
+        </form>
+
+        <form id="shop-reg-form" class="form-stack hidden">
+          <div class="notice-amber">
+            New shops stay <strong>Pending KYC</strong> until a Platform Admin verifies your Trade License and grants the <strong>✔ Verified</strong> sign.
+          </div>
+          <div class="form-row">
+            <label>Owner Name
+              <input id="shop-reg-owner" type="text" placeholder="Farhana Kabir" required />
+            </label>
+            <label>Shop / Brand Name
+              <input id="shop-reg-name" type="text" placeholder="Gulshan Heritage Loom" required />
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Phone
+              <input id="shop-reg-phone" type="text" placeholder="+880 1811-223344" required />
+            </label>
+            <label>Email
+              <input id="shop-reg-email" type="email" placeholder="farhana@heritage.bd" required />
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Area
+              <input id="shop-reg-area" type="text" value="Gulshan 1, Dhaka" required />
+            </label>
+            <label>Store Type
+              <select id="shop-reg-type">
+                <option value="PHYSICAL_POS">Physical Store (POS)</option>
+                <option value="PHYSICAL_MANUAL">Physical Store (Manual)</option>
+                <option value="ONLINE_ONLY">Online-Only Brand</option>
+              </select>
+            </label>
+          </div>
+          <label>Full Store Address
+            <input id="shop-reg-addr" type="text" placeholder="Road 12, Gulshan 1, Dhaka 1212" required />
+          </label>
+          <label>Trade License / DBID / NID Ref (Required)
+            <input id="shop-reg-license" type="text" placeholder="TRAD/DNCC/2026/88102" required />
+          </label>
+          <label>Create Password (min 4 chars)
+            <input id="shop-reg-pw" type="password" required />
+          </label>
+          <button class="btn btn-primary" type="submit">Submit Shop for Admin Verification</button>
+        </form>
+      </div>
+
+      <!-- Guest Auth -->
+      <div id="auth-panel-guest" class="auth-panel">
+        <div class="form-stack">
+          <p class="muted">
+            Continue without creating an account. You can explore every product, compare verified stores, and switch Light/Dark theme.
+            When you are ready to buy, simply log in or register as a Customer.
+          </p>
+          <button id="guest-continue-btn" class="btn btn-primary" type="button">Continue as Guest</button>
+        </div>
+      </div>
+
+      <!-- Admin Auth -->
+      <div id="auth-panel-admin" class="auth-panel">
+        <div class="form-stack">
+          <p class="muted">
+            Sign in as Platform Admin to inspect registered Trade Licenses and verify shops so they earn the green <strong>✔ Verified</strong> sign.
+          </p>
+          <button id="admin-demo-btn" class="btn btn-primary" type="button">Login as Platform Admin (Tariqul Islam)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOPPING BAG & CHECKOUT DRAWER MODAL -->
+  <div id="bag-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card modal-lg">
+      <button class="modal-close" data-close-modal="bag-modal" type="button" aria-label="Close">✕</button>
+      <div class="modal-header">
+        <h3>Shopping Bag &amp; Dhaka Checkout</h3>
+        <p class="muted">Stock is atomically reserved upon checkout. Cash on Delivery &amp; BD MFS adapters supported.</p>
+      </div>
+      <div id="bag-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
